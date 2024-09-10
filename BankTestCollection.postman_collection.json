@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "57b36fa5-c0da-4c11-b879-f8462b363ff6",
+		"name": "BankTestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-UserName",
+						"value": "Test",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Jonas\",\n  \"lastName\": \"Jonaitis\",\n  \"customerType\": \"PRIVATE\",\n  \"birthDate\": \"2000-01-15\",\n  \"phoneNumber\": \"+37060000000\",\n  \"email\": \"test@test.test\",\n  \"addresses\": [\n    {\n      \"country\": \"Lietuva\",\n      \"city\": \"Vilnius\",\n      \"street\": \"Gatve\",\n      \"houseNumber\": 3\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-UserName",
+						"value": "Test",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/customers?searchTerm=jonai&page=0&pageSize=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "searchTerm",
+							"value": "jonai"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Petras\",\n  \"lastName\": \"Jonaitis\",\n  \"birthDate\": \"2000-01-15\",\n  \"customerType\": \"PRIVATE\",\n  \"phoneNumber\": \"+37060000000\",\n  \"email\": \"test@test.test\",\n  \"addresses\": [\n    {\n      \"id\": 1,\n      \"country\": \"Lietuva\",\n      \"city\": \"Vilnius\",\n      \"street\": \"Gatve\",\n      \"houseNumber\": 5\n    }\n  ],\n  \"accounts\": [\n    {\n      \"accountNumber\": \"LT001609816961471121\"\n    }\n  ],\n  \"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
